@@ -1,428 +1,390 @@
-/**
- * Website developed by Kreative Minds UAE (kreativeminds.ae)
- * as part of Corporate Social Responsibility (CSR) for Free of Cost.
- * * SEO / AEO / GEO Metadata:
- * Keywords: HDO Pak, Helper Development Organization, Balochistan NGO, Youth Empowerment Pakistan, 
- * Women Rights Balochistan, Rural Development Pakistan, Disaster Relief Balochistan, 
- * Usta Muhammad NGO, Social Welfare Pakistan.
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO / AEO / GEO Metadata -->
+    <title>HDO Pak | Helper Development Organization</title>
+    <meta name="description" content="Helper Development Organization (HDO) Pak - Empowering communities at the grassroots level in Balochistan through youth development, women rights, and disaster relief.">
+    <meta name="keywords" content="HDO Pak, Helper Development Organization, Balochistan NGO, Youth Empowerment Pakistan, Women Rights Balochistan, Rural Development Pakistan, Disaster Relief Balochistan, Usta Muhammad NGO, Social Welfare Pakistan">
+    <meta name="author" content="Kreative Minds UAE">
 
-import React, { useState, useEffect } from 'react';
-import { 
-  Heart, 
-  Users, 
-  BookOpen, 
-  ShieldCheck, 
-  Globe, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  ChevronRight, 
-  Menu, 
-  X, 
-  Award, 
-  Zap, 
-  Sprout,
-  Facebook,
-  ExternalLink
-} from 'lucide-react';
+    <!-- Favicon -->
+    <link rel="icon" id="favicon" href="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/refs/heads/main/HDO%20new%20logo%20.jpg" type="image/jpeg">
 
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  // Official Assets from GitHub
-  const logoUrl = "https://raw.githubusercontent.com/KreativeMindsUAE/HDO/refs/heads/main/HDO%20new%20logo%20.jpg";
-  const imgRamadan = "https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/HDO%20Ramdan%20.jpg";
-  const imgDigitalSecurity = "https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/HDO%20digital%20Security%20training.jpg";
-  const imgCommunity = "https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/hdo%20community%20.jpg";
-  const imgLiteracy = "https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/hdo%20literacy%20.jpg";
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 3s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+            animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .selection-emerald::selection {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden selection-emerald">
 
-    // Set Favicon Dynamically
-    const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = logoUrl;
-    document.getElementsByTagName('head')[0].appendChild(link);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Our Impact', href: '#impact' },
-    { name: 'Focus Areas', href: '#focus' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const focusAreas = [
-    { title: "Youth Development", icon: <Users className="w-6 h-6" />, desc: "Building confidence and pathways for the next generation." },
-    { title: "Women's Empowerment", icon: <Heart className="w-6 h-6" />, desc: "Vocational training in tailoring, design, and computer skills." },
-    { title: "Education & Literacy", icon: <BookOpen className="w-6 h-6" />, desc: "Adult literacy and temporary learning centers in remote areas." },
-    { title: "Disaster Relief", icon: <ShieldCheck className="w-6 h-6" />, desc: "Emergency response and medical relief during crises." },
-    { title: "Poverty Alleviation", icon: <Zap className="w-6 h-6" />, desc: "Grassroots programs addressing systemic rural poverty." },
-    { title: "Rural Development", icon: <Sprout className="w-6 h-6" />, desc: "Collaborative growth in underserved communities." }
-  ];
-
-  return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 overflow-x-hidden selection:bg-emerald-100">
-      
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-emerald-900 shadow-2xl py-2' : 'bg-transparent py-4'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-4 group cursor-pointer">
-            {/* Logo in White Circle Frame */}
-            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-emerald-100 transition-transform duration-300 group-hover:scale-110 overflow-hidden p-1">
-              <img 
-                src={logoUrl} 
-                alt="HDO Logo" 
-                className="w-full h-full object-contain"
-                onError={(e) => { e.target.src = 'https://via.placeholder.com/60?text=HDO'; }}
-              />
-            </div>
-            <div className="transition-all duration-300">
-              <h1 className={`font-black text-2xl tracking-tighter leading-none ${scrolled ? 'text-white' : 'text-emerald-900'}`}>
-                HDO <span className="text-emerald-500">Pak</span>
-              </h1>
-              <p className={`text-[10px] font-bold uppercase tracking-widest mt-1 ${scrolled ? 'text-emerald-200' : 'text-emerald-700'}`}>
-                Helper Development Organization
-              </p>
-            </div>
-          </div>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className={`text-sm font-bold px-4 py-2 rounded-lg transition-all duration-300 ${scrolled ? 'text-emerald-50 hover:bg-emerald-800' : 'text-emerald-900 hover:bg-emerald-50'}`}
-              >
-                {link.name}
-              </a>
-            ))}
-            <button className="ml-4 bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-2.5 rounded-full text-sm font-black transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20">
-              Support Our Cause
-            </button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button className={`md:hidden p-2 rounded-lg ${scrolled ? 'text-white' : 'text-emerald-900'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-emerald-900 shadow-2xl py-6 px-4 flex flex-col gap-2 animate-in fade-in slide-in-from-top-4">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-lg font-bold text-emerald-50 py-3 px-4 rounded-xl hover:bg-emerald-800 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
-      <section id="home" className="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-emerald-100/30 -skew-x-12 transform origin-right -z-10 animate-pulse-slow"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-emerald-900 text-emerald-100 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-8 animate-bounce-subtle">
-              <Award className="w-3 h-3" /> Rooted in Balochistan since 2005
-            </div>
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 leading-[1.1] mb-8">
-              Empowering People <br /> 
-              <span className="text-emerald-700 italic font-serif">Aiming Change</span> for Tomorrow.
-            </h1>
-            <p className="text-xl text-slate-600 mb-12 leading-relaxed max-w-2xl font-medium">
-              A youth-led movement bringing sustainable development, women's empowerment, and emergency relief to the heart of Pakistan.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-5">
-              <a href="#impact" className="bg-emerald-800 text-white px-10 py-5 rounded-2xl font-black text-center hover:bg-emerald-900 hover:-translate-y-1 transition-all shadow-2xl shadow-emerald-900/30 flex items-center justify-center gap-3">
-                See Our Impact <ChevronRight className="w-5 h-5" />
-              </a>
-              <a href="#focus" className="bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-black text-center hover:bg-slate-50 hover:border-emerald-200 transition-all">
-                What We Do
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats/Highlight */}
-      <section className="bg-emerald-950 py-20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 100 Q 50 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5" />
-          </svg>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {[
-              { val: "2,000+", label: "Families Helped" },
-              { val: "150+", label: "Adult Learners" },
-              { val: "18+", label: "Years Experience" },
-              { val: "15+", label: "Relief Camps" }
-            ].map((stat, i) => (
-              <div key={i} className="group cursor-default">
-                <div className="text-5xl font-black mb-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300">{stat.val}</div>
-                <div className="text-emerald-200/60 text-xs font-black uppercase tracking-widest">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="aspect-[4/5] bg-slate-50 rounded-[3rem] overflow-hidden shadow-2xl group border-8 border-slate-50 relative">
-                <img 
-                    src={imgCommunity} 
-                    alt="HDO Community" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent transition-colors duration-500"></div>
-              </div>
-              <div className="absolute -bottom-10 -left-10 bg-white border-2 border-emerald-50 p-10 rounded-[2.5rem] shadow-2xl max-w-xs hidden sm:block hover:-rotate-3 transition-transform">
-                <p className="italic text-emerald-900 font-bold text-lg leading-relaxed">
-                  "Registered under the Society Act 1860, committed to Peace and Social Justice."
-                </p>
-              </div>
-            </div>
-            
-            <div className="order-1 lg:order-2">
-              <div className="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-800 rounded-full text-xs font-black uppercase tracking-widest mb-6">About HDO Pak</div>
-              <h3 className="text-4xl sm:text-5xl font-black text-slate-900 mb-8 leading-tight">
-                A Journey of Resilience <br />& Community Action.
-              </h3>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
-                Established in 2005, we have evolved from a small community-based organization into a robust regional force for good. We work where the need is greatest, often in the most underserved districts of Balochistan.
-              </p>
-              <div className="grid gap-6">
-                {[
-                  { icon: <Zap />, title: "Mission Driven", desc: "Empowering youth in decision-making and service delivery." },
-                  { icon: <Heart />, title: "Core Values", desc: "Equality, Self-Reliance, and Peace guide every program we run." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-200 hover:bg-white hover:shadow-xl transition-all group">
-                    <div className="flex-shrink-0 w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 group-hover:bg-emerald-700 group-hover:text-white transition-colors duration-300">
-                      {React.cloneElement(item.icon, { className: "w-7 h-7" })}
-                    </div>
-                    <div>
-                      <h4 className="font-black text-slate-900 text-lg mb-1">{item.title}</h4>
-                      <p className="text-sm text-slate-500 font-medium">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Impact / What We Do Section */}
-      <section id="impact" className="py-28 bg-slate-50 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-sm font-black text-emerald-700 uppercase tracking-[0.3em] mb-4">Our Track Record</h2>
-            <h3 className="text-4xl sm:text-6xl font-black text-slate-900">Proven Field Impact</h3>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              { 
-                img: imgRamadan, 
-                title: "Emergency Relief", 
-                body: "Responded to the floods in Jaffarabad, serving 2,000+ families with food and medical aid via 15 relief camps."
-              },
-              { 
-                img: imgDigitalSecurity, 
-                title: "Digital Security", 
-                body: "Empowering youth and community members with essential technical and security training for the modern digital age."
-              },
-              { 
-                img: imgLiteracy, 
-                title: "Literacy Centers", 
-                body: "Helped 150+ adults gain essential reading skills and built 12 temporary learning centers for children."
-              }
-            ].map((card, i) => (
-              <div key={i} className="bg-white overflow-hidden rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
-                <div className="h-56 overflow-hidden">
-                    <img src={card.img} alt={card.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <!-- Logo in White Circle Frame -->
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-emerald-100 transition-transform duration-300 group-hover:scale-110 overflow-hidden p-1">
+                    <img src="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/refs/heads/main/HDO%20new%20logo%20.jpg" alt="HDO Logo" class="w-full h-full object-contain">
                 </div>
-                <div className="p-10">
-                    <h4 className="text-2xl font-black text-slate-900 mb-4">{card.title}</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed font-medium">
-                    {card.body}
+                <div class="transition-all duration-300">
+                    <h1 id="nav-title" class="font-black text-2xl tracking-tighter leading-none text-emerald-900">
+                        HDO <span class="text-emerald-500">Pak</span>
+                    </h1>
+                    <p id="nav-subtitle" class="text-[10px] font-bold uppercase tracking-widest mt-1 text-emerald-700">
+                        Helper Development Organization
                     </p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Focus Areas Grid */}
-      <section id="focus" className="py-24 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-xl">
-              <h2 className="text-sm font-black text-emerald-700 uppercase tracking-[0.2em] mb-4">Our Focus Areas</h2>
-              <h3 className="text-4xl font-black text-slate-900">
-                A Holistic Approach <br />to Rural Pakistan.
-              </h3>
             </div>
-            <p className="text-slate-500 font-medium text-lg max-w-sm">
-              Sustainable change requires addressing development from multiple angles, from youth to rural literacy.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {focusAreas.map((area, idx) => (
-              <div key={idx} className="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
-                <div className="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform duration-300">
-                  {area.icon}
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center space-x-1">
+                <a href="#home" class="nav-link text-sm font-bold px-4 py-2 rounded-lg transition-all duration-300 text-emerald-900 hover:bg-emerald-50">Home</a>
+                <a href="#about" class="nav-link text-sm font-bold px-4 py-2 rounded-lg transition-all duration-300 text-emerald-900 hover:bg-emerald-50">About Us</a>
+                <a href="#impact" class="nav-link text-sm font-bold px-4 py-2 rounded-lg transition-all duration-300 text-emerald-900 hover:bg-emerald-50">Our Impact</a>
+                <a href="#focus" class="nav-link text-sm font-bold px-4 py-2 rounded-lg transition-all duration-300 text-emerald-900 hover:bg-emerald-50">Focus Areas</a>
+                <a href="#contact" class="nav-link text-sm font-bold px-4 py-2 rounded-lg transition-all duration-300 text-emerald-900 hover:bg-emerald-50">Contact</a>
+                <button class="ml-4 bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-2.5 rounded-full text-sm font-black transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-emerald-500/20">
+                    Support Our Cause
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-emerald-900">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-emerald-900 shadow-2xl py-6 px-4 flex flex-col gap-2">
+            <a href="#home" class="mobile-link text-lg font-bold text-emerald-50 py-3 px-4 rounded-xl hover:bg-emerald-800 transition-colors">Home</a>
+            <a href="#about" class="mobile-link text-lg font-bold text-emerald-50 py-3 px-4 rounded-xl hover:bg-emerald-800 transition-colors">About Us</a>
+            <a href="#impact" class="mobile-link text-lg font-bold text-emerald-50 py-3 px-4 rounded-xl hover:bg-emerald-800 transition-colors">Our Impact</a>
+            <a href="#focus" class="mobile-link text-lg font-bold text-emerald-50 py-3 px-4 rounded-xl hover:bg-emerald-800 transition-colors">Focus Areas</a>
+            <a href="#contact" class="mobile-link text-lg font-bold text-emerald-50 py-3 px-4 rounded-xl hover:bg-emerald-800 transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-100/30 -skew-x-12 transform origin-right -z-10 animate-pulse-slow"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-2 bg-emerald-900 text-emerald-100 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-8 animate-bounce-subtle">
+                    <i data-lucide="award" class="w-3 h-3"></i> Rooted in Balochistan since 2005
                 </div>
-                <div>
-                  <h5 className="font-black text-slate-900 text-lg mb-2">{area.title}</h5>
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed">{area.desc}</p>
+                <h1 class="text-5xl sm:text-7xl font-black text-slate-900 leading-[1.1] mb-8">
+                    Empowering People <br> 
+                    <span class="text-emerald-700 italic font-serif">Aiming Change</span> for Tomorrow.
+                </h1>
+                <p class="text-xl text-slate-600 mb-12 leading-relaxed max-w-2xl font-medium">
+                    A youth-led movement bringing sustainable development, women's empowerment, and emergency relief to the heart of Pakistan.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#impact" class="bg-emerald-800 text-white px-10 py-5 rounded-2xl font-black text-center hover:bg-emerald-900 hover:-translate-y-1 transition-all shadow-2xl shadow-emerald-900/30 flex items-center justify-center gap-3">
+                        See Our Impact <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#focus" class="bg-white border-2 border-slate-200 text-slate-700 px-10 py-5 rounded-2xl font-black text-center hover:bg-slate-50 hover:border-emerald-200 transition-all">
+                        What We Do
+                    </a>
                 </div>
-              </div>
-            ))}
-          </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-28 bg-emerald-950 text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-emerald-800/10 skew-x-12 translate-x-1/4"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-sm font-black text-emerald-400 uppercase tracking-[0.4em] mb-6">Let's Connect</h2>
-          <h3 className="text-4xl sm:text-6xl font-black mb-16 leading-tight">
-            Building Stronger Communities <br /><span className="text-emerald-400">Together.</span>
-          </h3>
-          
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-12 px-8 bg-white/5 rounded-[3rem] backdrop-blur-sm border border-white/10">
-            <div className="flex items-center gap-4 hover:scale-105 transition-transform group">
-              <div className="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center group-hover:bg-emerald-400 transition-colors">
-                <Phone className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">WhatsApp / Call</p>
-                <p className="text-xl font-bold">+92 300 9836288</p>
-              </div>
+    <!-- Stats Section -->
+    <section class="bg-emerald-950 py-20 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div class="group cursor-default">
+                    <div class="text-5xl font-black mb-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300">2,000+</div>
+                    <div class="text-emerald-200/60 text-xs font-black uppercase tracking-widest">Families Helped</div>
+                </div>
+                <div class="group cursor-default">
+                    <div class="text-5xl font-black mb-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300">150+</div>
+                    <div class="text-emerald-200/60 text-xs font-black uppercase tracking-widest">Adult Learners</div>
+                </div>
+                <div class="group cursor-default">
+                    <div class="text-5xl font-black mb-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300">18+</div>
+                    <div class="text-emerald-200/60 text-xs font-black uppercase tracking-widest">Years Experience</div>
+                </div>
+                <div class="group cursor-default">
+                    <div class="text-5xl font-black mb-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300">15+</div>
+                    <div class="text-emerald-200/60 text-xs font-black uppercase tracking-widest">Relief Camps</div>
+                </div>
             </div>
-
-            <div className="hidden md:block w-px h-16 bg-white/10"></div>
-            
-            <div className="flex items-center gap-4 hover:scale-105 transition-transform group">
-              <div className="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center group-hover:bg-emerald-400 transition-colors">
-                <Mail className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">Official Email</p>
-                <p className="text-xl font-bold">helperhdo@gmail.com</p>
-              </div>
-            </div>
-
-            <div className="hidden md:block w-px h-16 bg-white/10"></div>
-
-            <a href="https://facebook.com/Helper.org" target="_blank" className="flex items-center gap-4 hover:scale-105 transition-transform group">
-              <div className="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center group-hover:bg-emerald-400 transition-colors">
-                <Facebook className="w-6 h-6 text-white" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">Official Page</p>
-                <p className="text-xl font-bold">F/@Helper.org</p>
-              </div>
-            </a>
-          </div>
-
-          <div className="mt-16 inline-flex items-center gap-3 text-slate-400">
-            <MapPin className="w-5 h-5 text-emerald-500" />
-            <p className="font-bold uppercase tracking-wide">Usta Muhammad, Balochistan Pak.</p>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* Footer */}
-      <footer className="bg-white py-12 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
-            
-            {/* Left: Logo + Mission */}
-            <div className="flex items-center justify-center md:justify-start gap-4 group">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md p-1 border border-slate-100 transition-transform group-hover:scale-110">
-                <img src={logoUrl} alt="HDO Logo" className="w-full h-full object-contain" />
-              </div>
-              <div>
-                <span className="font-black text-slate-800 text-lg leading-none">HDO Pak</span>
-                <p className="text-[9px] text-slate-400 font-black uppercase tracking-wider">Empowering Communities Grassroots Level</p>
-              </div>
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="aspect-[4/5] bg-slate-50 rounded-[3rem] overflow-hidden shadow-2xl group border-8 border-slate-50 relative">
+                        <img src="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/hdo%20community%20.jpg" alt="HDO Community" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    <div class="absolute -bottom-10 -left-10 bg-white border-2 border-emerald-50 p-10 rounded-[2.5rem] shadow-2xl max-w-xs hidden sm:block hover:-rotate-3 transition-transform">
+                        <p class="italic text-emerald-900 font-bold text-lg leading-relaxed">
+                            "Registered under the Society Act 1860, committed to Peace and Social Justice."
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="inline-block px-4 py-1.5 bg-emerald-50 text-emerald-800 rounded-full text-xs font-black uppercase tracking-widest mb-6">About HDO Pak</div>
+                    <h3 class="text-4xl sm:text-5xl font-black text-slate-900 mb-8 leading-tight">
+                        A Journey of Resilience <br>& Community Action.
+                    </h3>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed font-medium">
+                        Established in 2005, we have evolved from a small community-based organization into a robust regional force for good. We work where the need is greatest, often in the most underserved districts of Balochistan.
+                    </p>
+                    <div class="grid gap-6">
+                        <div class="flex gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-200 hover:bg-white hover:shadow-xl transition-all group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 group-hover:bg-emerald-700 group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="zap" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-slate-900 text-lg mb-1">Mission Driven</h4>
+                                <p class="text-sm text-slate-500 font-medium">Empowering youth in decision-making and service delivery.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-200 hover:bg-white hover:shadow-xl transition-all group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-700 group-hover:bg-emerald-700 group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="heart" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-slate-900 text-lg mb-1">Core Values</h4>
+                                <p class="text-sm text-slate-500 font-medium">Equality, Self-Reliance, and Peace guide every program we run.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            {/* Center: Copyright */}
-            <div className="text-center">
-              <p className="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">
-                @Copyright {new Date().getFullYear()} All Rights Reserved
-              </p>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="py-28 bg-slate-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-sm font-black text-emerald-700 uppercase tracking-[0.3em] mb-4">Our Track Record</h2>
+                <h3 class="text-4xl sm:text-6xl font-black text-slate-900">Proven Field Impact</h3>
             </div>
 
-            {/* Right: Kreative Minds */}
-            <div className="flex items-center justify-center md:justify-end gap-1">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Designed by:</span>
-                <a 
-                    href="https://kreativeminds.ae" 
-                    target="_blank" 
-                    className="text-[10px] font-black text-emerald-700 hover:text-emerald-900 underline underline-offset-4 transition-colors tracking-widest"
-                >
-                    Kreative Minds
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Card 1 -->
+                <div class="bg-white overflow-hidden rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/HDO%20Ramdan%20.jpg" alt="Emergency Relief" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-10">
+                        <h4 class="text-2xl font-black text-slate-900 mb-4">Emergency Relief</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Responded to the floods in Jaffarabad, serving 2,000+ families with food and medical aid via 15 relief camps.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white overflow-hidden rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/HDO%20digital%20Security%20training.jpg" alt="Digital Security" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-10">
+                        <h4 class="text-2xl font-black text-slate-900 mb-4">Digital Security</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Empowering youth and community members with essential technical and security training for the modern digital age.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white overflow-hidden rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 group">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/main/hdo%20literacy%20.jpg" alt="Literacy Centers" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-10">
+                        <h4 class="text-2xl font-black text-slate-900 mb-4">Literacy Centers</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed font-medium">Helped 150+ adults gain essential reading skills and built 12 temporary learning centers for children.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Areas -->
+    <section id="focus" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <div class="max-w-xl">
+                    <h2 class="text-sm font-black text-emerald-700 uppercase tracking-[0.2em] mb-4">Our Focus Areas</h2>
+                    <h3 class="text-4xl font-black text-slate-900">A Holistic Approach <br>to Rural Pakistan.</h3>
+                </div>
+                <p class="text-slate-500 font-medium text-lg max-w-sm">Sustainable change requires addressing development from multiple angles, from youth to rural literacy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
+                    <div class="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform"><i data-lucide="users"></i></div>
+                    <div><h5 class="font-black text-slate-900 text-lg mb-2">Youth Development</h5><p class="text-sm text-slate-500 font-medium leading-relaxed">Building confidence and pathways for the next generation.</p></div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
+                    <div class="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform"><i data-lucide="heart"></i></div>
+                    <div><h5 class="font-black text-slate-900 text-lg mb-2">Women's Empowerment</h5><p class="text-sm text-slate-500 font-medium leading-relaxed">Vocational training in tailoring, design, and computer skills.</p></div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
+                    <div class="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform"><i data-lucide="book-open"></i></div>
+                    <div><h5 class="font-black text-slate-900 text-lg mb-2">Education & Literacy</h5><p class="text-sm text-slate-500 font-medium leading-relaxed">Adult literacy and temporary learning centers in remote areas.</p></div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
+                    <div class="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform"><i data-lucide="shield-check"></i></div>
+                    <div><h5 class="font-black text-slate-900 text-lg mb-2">Disaster Relief</h5><p class="text-sm text-slate-500 font-medium leading-relaxed">Emergency response and medical relief during crises.</p></div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
+                    <div class="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform"><i data-lucide="zap"></i></div>
+                    <div><h5 class="font-black text-slate-900 text-lg mb-2">Poverty Alleviation</h5><p class="text-sm text-slate-500 font-medium leading-relaxed">Grassroots programs addressing systemic rural poverty.</p></div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-[2rem] border border-slate-50 bg-slate-50/50 hover:bg-white hover:border-emerald-100 hover:shadow-xl transition-all group">
+                    <div class="flex-shrink-0 text-emerald-700 group-hover:scale-110 transition-transform"><i data-lucide="sprout"></i></div>
+                    <div><h5 class="font-black text-slate-900 text-lg mb-2">Rural Development</h5><p class="text-sm text-slate-500 font-medium leading-relaxed">Collaborative growth in underserved communities.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-28 bg-emerald-950 text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-emerald-800/10 skew-x-12 translate-x-1/4"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-sm font-black text-emerald-400 uppercase tracking-[0.4em] mb-6">Let's Connect</h2>
+            <h3 class="text-4xl sm:text-6xl font-black mb-16 leading-tight">Building Stronger Communities <br><span class="text-emerald-400">Together.</span></h3>
+            
+            <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 py-12 px-8 bg-white/5 rounded-[3rem] backdrop-blur-sm border border-white/10">
+                <div class="flex items-center gap-4 hover:scale-105 transition-transform group">
+                    <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center group-hover:bg-emerald-400 transition-colors"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                    <div class="text-left"><p class="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">WhatsApp / Call</p><p class="text-xl font-bold">+92 300 9836288</p></div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-white/10"></div>
+                <div class="flex items-center gap-4 hover:scale-105 transition-transform group">
+                    <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center group-hover:bg-emerald-400 transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></div>
+                    <div class="text-left"><p class="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">Official Email</p><p class="text-xl font-bold">helperhdo@gmail.com</p></div>
+                </div>
+                <div class="hidden md:block w-px h-16 bg-white/10"></div>
+                <a href="https://facebook.com/Helper.org" target="_blank" class="flex items-center gap-4 hover:scale-105 transition-transform group">
+                    <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center group-hover:bg-emerald-400 transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></div>
+                    <div class="text-left"><p class="text-xs font-black text-emerald-400 uppercase tracking-widest mb-1">Official Page</p><p class="text-xl font-bold">F/@Helper.org</p></div>
                 </a>
             </div>
 
-          </div>
+            <div class="mt-16 inline-flex items-center gap-3 text-slate-400">
+                <i data-lucide="map-pin" class="w-5 h-5 text-emerald-500"></i>
+                <p class="font-bold uppercase tracking-wide">Usta Muhammad, Balochistan Pak.</p>
+            </div>
         </div>
-      </footer>
-      
-      {/* Scroll to Top Call Button */}
-      <a 
-        href="tel:+923009836288" 
-        className="fixed bottom-8 right-8 bg-emerald-600 text-white p-5 rounded-full shadow-[0_20px_50px_rgba(5,150,105,0.4)] hover:scale-110 active:scale-95 transition-all z-40 animate-bounce-subtle"
-      >
-        <Phone className="w-7 h-7" />
-      </a>
+    </section>
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes bounce-subtle {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
-        }
-        .animate-bounce-subtle {
-          animation: bounce-subtle 3s ease-in-out infinite;
-        }
-        .animate-pulse-slow {
-          animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-      `}} />
-    </div>
-  );
-};
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+                <!-- Left: Logo + Mission -->
+                <div class="flex items-center justify-center md:justify-start gap-4 group">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md p-1 border border-slate-100 transition-transform group-hover:scale-110">
+                        <img src="https://raw.githubusercontent.com/KreativeMindsUAE/HDO/refs/heads/main/HDO%20new%20logo%20.jpg" alt="HDO Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span class="font-black text-slate-800 text-lg leading-none">HDO Pak</span>
+                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-wider">Empowering Communities Grassroots Level</p>
+                    </div>
+                </div>
+                <!-- Center: Copyright -->
+                <div class="text-center">
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">@Copyright 2026 All Rights Reserved</p>
+                </div>
+                <!-- Right: Kreative Minds -->
+                <div class="flex items-center justify-center md:justify-end gap-1">
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Designed by:</span>
+                    <a href="https://kreativeminds.ae" target="_blank" class="text-[10px] font-black text-emerald-700 hover:text-emerald-900 underline underline-offset-4 transition-colors tracking-widest">Kreative Minds</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-export default App;
+    <!-- Fixed Call Button -->
+    <a href="tel:+923009836288" class="fixed bottom-8 right-8 bg-emerald-600 text-white p-5 rounded-full shadow-[0_20px_50px_rgba(5,150,105,0.4)] hover:scale-110 active:scale-95 transition-all z-40 animate-bounce-subtle">
+        <i data-lucide="phone" class="w-7 h-7"></i>
+    </a>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        const navbar = document.getElementById('navbar');
+        const navTitle = document.getElementById('nav-title');
+        const navSubtitle = document.getElementById('nav-subtitle');
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-emerald-900', 'shadow-2xl', 'py-2');
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navTitle.classList.replace('text-emerald-900', 'text-white');
+                navSubtitle.classList.replace('text-emerald-700', 'text-emerald-200');
+                menuToggle.classList.replace('text-emerald-900', 'text-white');
+                navLinks.forEach(link => {
+                    link.classList.replace('text-emerald-900', 'text-emerald-50');
+                    link.classList.replace('hover:bg-emerald-50', 'hover:bg-emerald-800');
+                });
+            } else {
+                navbar.classList.add('bg-transparent', 'py-4');
+                navbar.classList.remove('bg-emerald-900', 'shadow-2xl', 'py-2');
+                navTitle.classList.replace('text-white', 'text-emerald-900');
+                navSubtitle.classList.replace('text-emerald-200', 'text-emerald-700');
+                menuToggle.classList.replace('text-white', 'text-emerald-900');
+                navLinks.forEach(link => {
+                    link.classList.replace('text-emerald-50', 'text-emerald-900');
+                    link.classList.replace('hover:bg-emerald-800', 'hover:bg-emerald-50');
+                });
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
